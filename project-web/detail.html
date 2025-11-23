@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detail Perusahaan</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background:#07103a; color:white; font-family:Inter,Arial; }
+    .glass { background:rgba(255,255,255,0.07); backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,0.1); }
+  </style>
+</head>
+
+<body class="min-h-screen p-6">
+
+  <a href="index.html" class="text-sm mb-4 inline-block">← Kembali</a>
+
+  <div id="detail" class="glass max-w-3xl mx-auto p-6 rounded-xl"></div>
+
+  <script>
+    // Data dengan deskripsi panjang
+    const data = [
+      { 
+        id: 1, 
+        title: "PT. Inovasi Digital", 
+        img:"assets/img/inovasi digital.jpeg",
+        desc: `
+          <h2 class="text-xl font-semibold mt-4">Bidang Usaha</h2>
+          <p>Teknologi IoT, AI, dan Sistem Otomasi</p>
+
+          <h2 class="text-xl font-semibold mt-4">Profil Lengkap</h2>
+          <p class="opacity-90">
+            PT. Inovasi Digital adalah perusahaan teknologi yang bergerak di bidang Internet of Things (IoT) 
+            dan kecerdasan buatan (AI). Perusahaan ini berfokus pada pengembangan sistem otomatisasi modern 
+            untuk kebutuhan rumah, industri, dan bisnis.
+          </p>
+
+          <h2 class="text-xl font-semibold mt-4">Produk & Layanan</h2>
+          <ul class="list-disc ml-6 opacity-90">
+            <li>Smart Home System</li>
+            <li>Sistem Keamanan Berbasis AI</li>
+            <li>Sensor IoT untuk monitoring pabrik</li>
+            <li>Konsultasi teknologi dan integrasi sistem</li>
+            <li>Riset dan pengembangan teknologi AI</li>
+          </ul>
+
+          <h2 class="text-xl font-semibold mt-4">Keunggulan</h2>
+          <ul class="list-disc ml-6 opacity-90">
+            <li>Tim engineer profesional lulusan dalam & luar negeri</li>
+            <li>Menggunakan teknologi terkini seperti edge computing</li>
+            <li>Bekerja sama dengan 40+ perusahaan nasional</li>
+          </ul>
+        `
+      },
+
+      { 
+        id: 2, 
+        title: "PT. Karya Nusantara", 
+        img:"assets/img/karya nusantara.jpeg",
+        desc: `
+          <h2 class="text-xl font-semibold mt-4">Bidang Usaha</h2>
+          <p>Energi Terbarukan (Renewable Energy)</p>
+
+          <h2 class="text-xl font-semibold mt-4">Profil Lengkap</h2>
+          <p class="opacity-90">
+            PT. Karya Nusantara merupakan perusahaan penyedia solusi energi ramah lingkungan untuk rumah tangga 
+            dan industri. Perusahaan ini terkenal sebagai integrator panel surya dan sistem energi hemat listrik.
+          </p>
+
+          <h2 class="text-xl font-semibold mt-4">Produk & Layanan</h2>
+          <ul class="list-disc ml-6 opacity-90">
+            <li>Pemasangan solar panel</li>
+            <li>Produksi baterai penyimpanan energi</li>
+            <li>Desain sistem energi skala rumah hingga pabrik</li>
+            <li>Konsultasi manajemen energi</li>
+            <li>Penelitian energi hijau industri berat</li>
+          </ul>
+
+          <h2 class="text-xl font-semibold mt-4">Keunggulan</h2>
+          <ul class="list-disc ml-6 opacity-90">
+            <li>Mengadopsi standar internasional ISO 50001</li>
+            <li>Efisiensi energi hingga 35% untuk klien</li>
+            <li>Mendukung program Indonesia Net Zero 2060</li>
+          </ul>
+        `
+      },
+
+      { 
+        id: 3, 
+        title: "CV. Kreatif Studio", 
+        img:"assets/img/Creative Studio.jpeg",
+        desc: `
+          <h2 class="text-xl font-semibold mt-4">Bidang Usaha</h2>
+          <p>Branding, desain grafis, dan digital creative</p>
+
+          <h2 class="text-xl font-semibold mt-4">Profil Lengkap</h2>
+          <p class="opacity-90">
+            CV. Kreatif Studio adalah studio desain yang membantu UMKM hingga startup dalam membangun identitas 
+            brand. Mereka terkenal dengan gaya desain modern, clean, dan berfokus pada storytelling visual.
+          </p>
+
+          <h2 class="text-xl font-semibold mt-4">Produk & Layanan</h2>
+          <ul class="list-disc ml-6 opacity-90">
+            <li>Logo & identitas brand</li>
+            <li>UI/UX website dan mobile</li>
+            <li>Konten digital & social media kit</li>
+            <li>Fotografi produk</li>
+            <li>Desain ilustrasi & poster event</li>
+          </ul>
+
+          <h2 class="text-xl font-semibold mt-4">Keunggulan</h2>
+          <ul class="list-disc ml-6 opacity-90">
+            <li>Desainer berpengalaman lebih dari 7 tahun</li>
+            <li>Telah membantu lebih dari 500+ UMKM</li>
+            <li>Hasil desain premium tetapi tetap terjangkau</li>
+          </ul>
+        `
+      }
+    ];
+
+    // ambil id dari URL
+    const id = new URLSearchParams(window.location.search).get("id");
+    const item = data.find(x => x.id == id);
+
+    const root = document.getElementById("detail");
+
+    if(item){
+      root.innerHTML = `
+        <img src="${item.img}" class="w-full h-64 object-cover rounded mb-4">
+        <h1 class="text-2xl font-bold">${item.title}</h1>
+
+        <div class="mt-3">${item.desc}</div>
+
+        <div class="mt-6">
+          <a href="#" class="px-4 py-2 bg-indigo-600 rounded">Hubungi</a>
+        </div>
+      `;
+    }
+  </script>
+
+</body>
+</html>

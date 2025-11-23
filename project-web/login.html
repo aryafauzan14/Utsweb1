@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background:linear-gradient(135deg,#0f172a,#07103a); color:#fff; font-family:Inter,Arial; }
+    .glass { background: rgba(255,255,255,0.06); backdrop-filter: blur(6px); border:1px solid rgba(255,255,255,0.08); }
+  </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center p-6">
+
+  <div class="glass p-8 rounded-xl w-full max-w-md">
+    <h2 class="text-2xl font-bold mb-4">Masuk</h2>
+
+    <form id="loginForm">
+      <label class="block text-sm">Username</label>
+      <input id="username" class="w-full p-2 rounded-md bg-slate-800 mb-3" required>
+
+      <label class="block text-sm">Password</label>
+      <input id="password" type="password" class="w-full p-2 rounded-md bg-slate-800 mb-4" required>
+
+      <button type="submit" class="w-full py-2 bg-indigo-600 rounded-md">Login</button>
+    </form>
+
+    <p class="text-sm mt-3 opacity-80">
+      Belum punya akun? 
+      <a href="register.html" class="text-indigo-300">Daftar</a>
+    </p>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', e => {
+      e.preventDefault();
+
+      const u = document.getElementById('username').value.trim();
+      const p = document.getElementById('password').value;
+
+      if(u === '' || p === ''){
+        alert('Username dan password wajib diisi!');
+        return;
+      }
+
+      // Ambil user dari localStorage
+      const USERS = JSON.parse(localStorage.getItem('users') || '[]');
+
+      let found = USERS.find(user => user.username === u && user.password === p);
+
+      if(found){
+        // simpan user login
+        localStorage.setItem('loggedUser', u);
+        window.location.href = 'menu.html';
+      } else {
+        alert('Login gagal: username atau password salah.');
+      }
+    });
+  </script>
+
+</body>
+</html>

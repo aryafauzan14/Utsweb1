@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tambah Informasi</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background:#07103a; color:white; font-family:Inter,Arial; }
+    .glass { background:rgba(255,255,255,0.07); backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,0.1); }
+  </style>
+</head>
+<body class="min-h-screen p-6">
+
+  <a href="menu.html" class="text-sm mb-4 inline-block">← Kembali ke Menu</a>
+
+  <div class="glass max-w-xl mx-auto p-6 rounded-xl">
+    <h1 class="text-2xl font-bold mb-4">Tambah Informasi Perusahaan</h1>
+
+    <form id="addForm" class="space-y-3">
+
+      <div>
+        <label class="block mb-1">Nama Perusahaan</label>
+        <input id="title" class="w-full p-2 rounded bg-slate-800" required>
+      </div>
+
+      <div>
+        <label class="block mb-1">Deskripsi</label>
+        <textarea id="desc" class="w-full p-2 rounded bg-slate-800" rows="4" required></textarea>
+      </div>
+
+      <div>
+        <label class="block mb-1">Upload Gambar (Opsional)</label>
+        <input id="img" type="file" class="w-full" accept="image/*">
+      </div>
+
+      <button type="submit" class="px-4 py-2 bg-indigo-600 rounded-md">
+        Simpan Informasi
+      </button>
+
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('addForm').addEventListener('submit', async function(e){
+      e.preventDefault();
+
+      const title = document.getElementById('title').value;
+      const desc = document.getElementById('desc').value;
+      const file = document.getElementById('img').files[0];
+
+      let imgPath = "";
+
+      if(file){
+        imgPath = "assets/img/" + file.name;
+        alert("⚠️ Ingat! Pindahkan file gambar ke folder assets/img/\nNama file: " + file.name);
+      }
+
+      const newInfo = {
+        id: Date.now(),
+        title,
+        excerpt: desc.substring(0, 40) + "...",
+        desc,
+        img: imgPath
+      };
+
+      // simpan ke localStorage (demo)
+      const saved = JSON.parse(localStorage.getItem('infos') || '[]');
+      saved.push(newInfo);
+      localStorage.setItem('infos', JSON.stringify(saved));
+
+      alert("Data berhasil ditambahkan!");
+      window.location.href = "index.html";
+    });
+  </script>
+</body>
+</html>
