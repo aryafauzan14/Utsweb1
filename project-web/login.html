@@ -7,12 +7,26 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { background:linear-gradient(135deg,#0f172a,#07103a); color:#fff; font-family:Inter,Arial; }
-    .glass { background: rgba(255,255,255,0.06); backdrop-filter: blur(6px); border:1px solid rgba(255,255,255,0.08); }
+    body { 
+      background: linear-gradient(135deg,#0f172a,#07103a); 
+      color: #fff; 
+      font-family: Inter, Arial; 
+      display: flex; 
+      flex-direction: column; 
+      min-height: 100vh; 
+    }
+    .glass { 
+      background: rgba(255,255,255,0.06); 
+      backdrop-filter: blur(6px); 
+      border: 1px solid rgba(255,255,255,0.08); 
+    }
+    footer { 
+      margin-top: auto; 
+    }
   </style>
 </head>
 
-<body class="min-h-screen flex items-center justify-center p-6">
+<body class="p-6 flex flex-col items-center justify-center">
 
   <div class="glass p-8 rounded-xl w-full max-w-md">
     <h2 class="text-2xl font-bold mb-4">Masuk</h2>
@@ -32,6 +46,11 @@
       <a href="register.html" class="text-indigo-300">Daftar</a>
     </p>
   </div>
+
+  <!-- FOOTER -->
+  <footer class="p-6 text-center glass rounded-t-xl w-full max-w-md mt-6">
+    <p>@Copyright by 23552011321_Arya Fauzan_23 CNS B</p>
+  </footer>
 
   <script>
     document.getElementById('loginForm').addEventListener('submit', e => {

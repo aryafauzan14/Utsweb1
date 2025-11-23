@@ -6,15 +6,25 @@
   <title>Registrasi</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
-    body { background:#07103a; color:#e6eef8; font-family:Inter,Arial; }
-    .glass { background: rgba(255,255,255,0.06); backdrop-filter: blur(6px); border:1px solid rgba(255,255,255,0.08); }
+    body { 
+      background:#07103a; 
+      color:#e6eef8; 
+      font-family:Inter,Arial; 
+    }
+    .glass { 
+      background: rgba(255,255,255,0.06); 
+      backdrop-filter: blur(6px); 
+      border:1px solid rgba(255,255,255,0.08); 
+    }
   </style>
 </head>
 
-<body class="min-h-screen flex items-center justify-center p-6">
+<body class="min-h-screen flex flex-col items-center justify-center p-6">
 
-  <div class="glass p-8 rounded-xl w-full max-w-md">
+  <!-- REGISTRATION CARD -->
+  <div class="glass p-8 rounded-xl w-full max-w-md mb-6">
     <h2 class="text-2xl font-bold mb-4">Daftar Akun</h2>
 
     <form id="regForm">
@@ -30,6 +40,12 @@
       <button type="submit" class="w-full py-2 bg-emerald-500 rounded-md">Daftar</button>
     </form>
   </div>
+
+  <!-- FOOTER -->
+  <footer class="p-4 text-center glass w-full max-w-md rounded-md">
+    <p>@Copyright by 23552011321_Arya Fauzan_23 CNS B</p>
+  </footer>
+
 
   <script>
     document.getElementById('regForm').addEventListener('submit', e => {

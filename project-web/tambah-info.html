@@ -7,15 +7,25 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { background:#07103a; color:white; font-family:Inter,Arial; }
-    .glass { background:rgba(255,255,255,0.07); backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,0.1); }
+    body { 
+      background:#07103a; 
+      color:white; 
+      font-family:Inter,Arial; 
+    }
+    .glass { 
+      background:rgba(255,255,255,0.07); 
+      backdrop-filter:blur(6px); 
+      border:1px solid rgba(255,255,255,0.1); 
+    }
   </style>
 </head>
-<body class="min-h-screen p-6">
+
+<body class="min-h-screen flex flex-col p-6">
 
   <a href="menu.html" class="text-sm mb-4 inline-block">← Kembali ke Menu</a>
 
-  <div class="glass max-w-xl mx-auto p-6 rounded-xl">
+  <!-- FORM CARD -->
+  <div class="glass max-w-xl mx-auto p-6 rounded-xl mb-6 w-full">
     <h1 class="text-2xl font-bold mb-4">Tambah Informasi Perusahaan</h1>
 
     <form id="addForm" class="space-y-3">
@@ -42,6 +52,12 @@
     </form>
   </div>
 
+  <!-- FOOTER -->
+  <footer class="glass p-4 rounded-md text-center max-w-xl mx-auto w-full">
+    <p>@Copyright by 23552011321_Arya Fauzan_23 CNS B</p>
+  </footer>
+
+
   <script>
     document.getElementById('addForm').addEventListener('submit', async function(e){
       e.preventDefault();
@@ -65,7 +81,6 @@
         img: imgPath
       };
 
-      // simpan ke localStorage (demo)
       const saved = JSON.parse(localStorage.getItem('infos') || '[]');
       saved.push(newInfo);
       localStorage.setItem('infos', JSON.stringify(saved));
@@ -74,5 +89,6 @@
       window.location.href = "index.html";
     });
   </script>
+
 </body>
 </html>

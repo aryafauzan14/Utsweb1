@@ -7,18 +7,28 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body{background:linear-gradient(180deg,#041029,#081534);color:#eaf2ff;font-family:Inter,Arial}
-    .glass { background:rgba(255,255,255,0.06); backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,0.08); }
+    body {
+      background: linear-gradient(180deg, #041029, #081534);
+      color: #eaf2ff;
+      font-family: Inter, Arial;
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
   </style>
 </head>
 
 <body class="min-h-screen p-6">
 
+  <!-- HEADER -->
   <header class="flex justify-between items-center mb-6">
     <h1 class="text-2xl font-bold">Menu Utama</h1>
     <a href="index.html" class="px-3 py-2 rounded-md glass">Keluar</a>
   </header>
 
+  <!-- CONTENT -->
   <main class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
     <div class="glass p-4 rounded-xl">
@@ -39,6 +49,7 @@
 
   </main>
 
+  <!-- FOOTER -->
   <footer class="p-6 text-center glass mt-6">
     <p>@Copyright by 23552011321_Arya Fauzan_23 CNS B</p>
   </footer>
